@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FD0809;
+  --color-white: #ffffff;
+  --color-text: #1a1a1a;
+  --color-background: #ffffff;
+  --color-accent-black: #000000;
+  
+  --font-heading: 'Bangers', cursive;
+  --font-body: 'Outfit', sans-serif;
+  
+  --animate-reveal: reveal 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
+}
+
+:root {
+  --border-width: 3px;
+  --border-radius: 12px;
+  /* Redefine vars here if needed by other non-tailwind generic css, 
+     but standard v4 @theme vars are available as utilities too usually 
+     if configured, but simpler to keep basic vars in root if just used in css */
+  --color-primary: #FD0809;
+  --color-accent-black: #000000;
+  --color-white: #ffffff;
+  --font-heading: 'Bangers', cursive;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer components {
+  .comic-border {
+    border: var(--border-width) solid var(--color-accent-black);
+    box-shadow: 4px 4px 0px var(--color-accent-black);
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .comic-border:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--color-accent-black);
+  }
+
+  .comic-button {
+    @apply px-6 py-3 text-xl uppercase tracking-wider font-bold bg-white text-black border-2 border-black rounded-lg shadow-[4px_4px_0px_#000] active:translate-y-1 active:shadow-[2px_2px_0px_#000] active:translate-x-1 transition-all cursor-pointer inline-block;
+    font-family: var(--font-heading);
+  }
+
+  .comic-button-primary {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .comic-section {
+    @apply py-20 px-4 md:px-8;
+  }
+
+  .comic-container {
+    @apply max-w-6xl mx-auto;
+  }
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
