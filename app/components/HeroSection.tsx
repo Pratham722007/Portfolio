@@ -9,6 +9,10 @@ const roles = [
     "Full Stack Developer"
 ];
 
+import ComicBackground from './ComicBackground';
+
+// ... (existing imports)
+
 export default function HeroSection() {
     const [roleIndex, setRoleIndex] = useState(0);
     const [fade, setFade] = useState(true);
@@ -26,30 +30,8 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/hero-bg.png"
-                    alt="Comic Background"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-            </div>
-
-            {/* Web Overlay */}
-            <div
-                className="absolute inset-0 z-0 opacity-50 mix-blend-screen pointer-events-none"
-                style={{ maskImage: 'radial-gradient(circle, transparent 60%, black 100%)', WebkitMaskImage: 'radial-gradient(circle, transparent 60%, black 100%)' }}
-            >
-                <Image
-                    src="/web-overlay.png"
-                    alt="Web Overlay"
-                    fill
-                    className="object-cover"
-                />
-            </div>
+        <section className="min-h-screen flex items-center justify-center pt-16 pb-20 relative overflow-hidden">
+            <ComicBackground />
 
             <div className="comic-container grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center w-full relative z-10 px-6">
                 {/* Left: Text Content */}

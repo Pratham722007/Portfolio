@@ -91,3 +91,15 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+@keyframes tingle {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-10deg) scale(1.1); }
+  50% { transform: rotate(10deg) scale(1.1); }
+  75% { transform: rotate(-5deg) scale(1.1); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.animate-tingle {
+  animation: tingle 0.5s ease-in-out infinite;
+}
