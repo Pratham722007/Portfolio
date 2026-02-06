@@ -1,6 +1,7 @@
 'use client';
 
 import ProjectCard from './ProjectCard';
+import ScrollReveal from './ScrollReveal';
 
 import ComicBackground from './ComicBackground';
 
@@ -48,11 +49,12 @@ export default function ProjectsSection() {
                     </p>
                 </div>
 
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
                     {projects.map((project, index) => (
-                        <div key={index} className="animate-in fade-in slide-in-from-bottom-8 duration-700" style={{ animationDelay: `${index * 200}ms` }}>
+                        <ScrollReveal key={index} delay={index * 150} className="h-full">
                             <ProjectCard {...project} />
-                        </div>
+                        </ScrollReveal>
                     ))}
                 </div>
             </div>
