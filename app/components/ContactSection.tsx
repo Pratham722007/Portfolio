@@ -3,6 +3,90 @@
 import ComicBackground from './ComicBackground';
 import ScrollReveal from './ScrollReveal';
 
+import { useState } from 'react';
+
+function ContactForm() {
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('loading');
+
+        // Fire request in background (optimistic)
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        }).catch(err => console.error('Email send failed:', err));
+
+        // Artificial delay for UX "Sending..." state
+        setTimeout(() => {
+            setStatus('success');
+            setFormData({ name: '', email: '', message: '' });
+            setTimeout(() => setStatus('idle'), 3000);
+        }, 2000);
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    return (
+        <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+                <label className="block text-lg md:text-xl font-bold mb-2 text-black">Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-gray-100 border-2 border-black p-3 rounded focus:bg-white focus:shadow-[4px_4px_0px_#FD0809] transition-all outline-none text-black"
+                    placeholder="Your Name"
+                />
+            </div>
+            <div>
+                <label className="block text-lg md:text-xl font-bold mb-2 text-black">Email</label>
+                <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-gray-100 border-2 border-black p-3 rounded focus:bg-white focus:shadow-[4px_4px_0px_#FD0809] transition-all outline-none text-black"
+                    placeholder="your@email.com"
+                />
+            </div>
+            <div>
+                <label className="block text-lg md:text-xl font-bold mb-2 text-black">Message</label>
+                <textarea
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-gray-100 border-2 border-black p-3 rounded focus:bg-white focus:shadow-[4px_4px_0px_#FD0809] transition-all outline-none text-black"
+                    placeholder="What's on your mind?"
+                ></textarea>
+            </div>
+            <button
+                type="submit"
+                disabled={status === 'loading' || status === 'success'}
+                className={`comic-button w-full text-lg transition-all ${status === 'success' ? 'bg-green-500 text-white border-green-700' :
+                    status === 'error' ? 'bg-red-500 text-white border-red-700' :
+                        'bg-black text-white hover:bg-gray-800'
+                    }`}
+            >
+                {status === 'loading' ? 'Sending...' :
+                    status === 'success' ? 'Message Sent! 🚀' :
+                        status === 'error' ? 'Error. Try Again.' :
+                            'Send Message'}
+            </button>
+        </form>
+    );
+}
+
 export default function ContactSection() {
     return (
         <section id="contact" className="py-24 relative overflow-hidden">
@@ -21,23 +105,7 @@ export default function ContactSection() {
 
                             {/* Contact Form */}
                             <div>
-                                <form className="space-y-4">
-                                    <div>
-                                        <label className="block text-lg md:text-xl font-bold mb-2 text-black">Name</label>
-                                        <input type="text" className="w-full bg-gray-100 border-2 border-black p-3 rounded focus:bg-white focus:shadow-[4px_4px_0px_#FD0809] transition-all outline-none text-black" placeholder="Your Name" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-lg md:text-xl font-bold mb-2 text-black">Email</label>
-                                        <input type="email" className="w-full bg-gray-100 border-2 border-black p-3 rounded focus:bg-white focus:shadow-[4px_4px_0px_#FD0809] transition-all outline-none text-black" placeholder="your@email.com" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-lg md:text-xl font-bold mb-2 text-black">Message</label>
-                                        <textarea rows={4} className="w-full bg-gray-100 border-2 border-black p-3 rounded focus:bg-white focus:shadow-[4px_4px_0px_#FD0809] transition-all outline-none text-black" placeholder="What's on your mind?"></textarea>
-                                    </div>
-                                    <button type="submit" className="comic-button bg-black text-white hover:bg-gray-800 w-full text-lg">
-                                        Send Message
-                                    </button>
-                                </form>
+                                <ContactForm />
                             </div>
 
                             {/* Direct Info */}

@@ -1,16 +1,21 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import HeroSection from './components/HeroSection';
 import ProjectsSection from './components/ProjectsSection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ComicSeparator from './components/ComicSeparator';
+import LoadingScreen from './components/LoadingScreen';
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Show loading screen for 3.5 seconds
+    const timer = setTimeout(() => setIsLoading(false), 3500);
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -22,13 +27,22 @@ export default function Home() {
       rootMargin: "0px 0px -50px 0px"
     });
 
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach((el) => observer.observe(el));
+    // Only observe after loading is done, or check if elements exist
+    if (!isLoading) {
+      const revealElements = document.querySelectorAll('.reveal');
+      revealElements.forEach((el) => observer.observe(el));
+    }
 
     return () => {
+      clearTimeout(timer);
+      const revealElements = document.querySelectorAll('.reveal');
       revealElements.forEach((el) => observer.unobserve(el));
     };
-  }, []);
+  }, [isLoading]);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <main className="min-h-screen bg-white">

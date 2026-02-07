@@ -54,34 +54,34 @@ export default function AboutSection() {
                     {/* RIGHT COLUMN: Quick Facts Card */}
                     <div className="md:w-1/2">
                         <ScrollReveal delay={400} className="h-full">
-                            <div className="comic-border bg-white h-full p-6 md:p-8 relative overflow-hidden shadow-[8px_8px_0px_#000] md:shadow-[12px_12px_0px_#000] border-[3px] border-black">
-                                <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary border-b-4 border-yellow-400 pb-2 inline-block">
+                            <div className="comic-border bg-white h-full p-8 md:p-10 relative overflow-hidden shadow-[8px_8px_0px_#000] md:shadow-[12px_12px_0px_#000] border-[3px] border-black">
+                                <h3 className="text-3xl md:text-4xl font-bold mb-8 text-primary border-b-4 border-yellow-400 pb-2 inline-block">
                                     ⚡ Quick Facts
                                 </h3>
 
-                                <div className="space-y-6 text-black">
+                                <div className="space-y-8 text-black">
                                     {/* Education Item */}
-                                    <div className="flex items-start gap-4">
-                                        <span className="text-2xl">🎓</span>
+                                    <div className="flex items-start gap-5">
+                                        <span className="text-3xl">🎓</span>
                                         <div>
-                                            <h4 className="font-bold text-lg">B.Tech AI Student at SVNIT</h4>
-                                            <p className="text-gray-600 text-sm font-bold">2024–Present</p>
+                                            <h4 className="font-bold text-xl md:text-2xl">B.Tech AI Student at SVNIT</h4>
+                                            <p className="text-gray-600 text-base md:text-lg font-bold">2024–Present</p>
                                         </div>
                                     </div>
                                     {/* Full Stack */}
-                                    <div className="flex items-start gap-4">
-                                        <span className="text-2xl">💻</span>
+                                    <div className="flex items-start gap-5">
+                                        <span className="text-3xl">💻</span>
                                         <div>
-                                            <h4 className="font-bold text-lg">Full-stack Developer</h4>
-                                            <p className="text-gray-600 text-sm font-bold">Specializing in Next.js & Python</p>
+                                            <h4 className="font-bold text-xl md:text-2xl">Full-stack Developer</h4>
+                                            <p className="text-gray-600 text-base md:text-lg font-bold">Specializing in Next.js & Python</p>
                                         </div>
                                     </div>
                                     {/* Achievements merged here */}
-                                    <div className="flex items-start gap-4">
-                                        <span className="text-2xl">🏆</span>
+                                    <div className="flex items-start gap-5">
+                                        <span className="text-3xl">🏆</span>
                                         <div>
-                                            <h4 className="font-bold text-lg">Competitive Programmer</h4>
-                                            <ul className="text-gray-600 text-sm mt-1 space-y-1 font-medium">
+                                            <h4 className="font-bold text-xl md:text-2xl">Competitive Programmer</h4>
+                                            <ul className="text-gray-600 text-base md:text-lg mt-2 space-y-2 font-medium">
                                                 <li>• 200+ LeetCode Solved (Rating: 1407)</li>
                                                 <li>• Codeforces Max Rating: 967</li>
                                                 <li>• Top 100 @ HACKOUT’25 (DAIICT)</li>
@@ -89,11 +89,11 @@ export default function AboutSection() {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className="flex items-start gap-4">
-                                        <span className="text-2xl">🌱</span>
+                                    <div className="flex items-start gap-5">
+                                        <span className="text-3xl">🌱</span>
                                         <div>
-                                            <h4 className="font-bold text-lg">Constantly Learning</h4>
-                                            <p className="text-gray-600 text-sm font-bold">Exploring GenAI, ML, and Web3</p>
+                                            <h4 className="font-bold text-xl md:text-2xl">Constantly Learning</h4>
+                                            <p className="text-gray-600 text-base md:text-lg font-bold">Exploring GenAI, ML, and Web3</p>
                                         </div>
                                     </div>
                                 </div>
