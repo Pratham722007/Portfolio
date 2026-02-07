@@ -8,6 +8,7 @@ interface ScrollRevealProps {
     className?: string;
     delay?: number;
 }
+//deployement trigger
 
 export default function ScrollReveal({
     children,
