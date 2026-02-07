@@ -67,11 +67,21 @@ export default function HeroSection() {
                             </div>
 
                             <div className="flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start pt-4">
-                                {['GitHub', 'LinkedIn', 'LeetCode', 'Email'].map((social, index) => (
-                                    <ScrollReveal key={social} delay={index * 100}>
-                                        <span className="px-3 py-1 md:px-4 md:py-2 border-2 border-white rounded-full font-bold text-xs md:text-sm text-white hover:bg-white hover:text-red-600 transition-colors cursor-pointer drop-shadow-md block">
-                                            {social}
-                                        </span>
+                                {[
+                                    { name: 'GitHub', url: 'https://github.com/Pratham722007' },
+                                    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/pratham-patadiya-4b1344300' },
+                                    { name: 'LeetCode', url: 'https://leetcode.com/u/Pratham722007/' },
+                                    { name: 'Email', url: 'mailto:patadiyapratham98@gmail.com' }
+                                ].map((social, index) => (
+                                    <ScrollReveal key={social.name} delay={index * 100}>
+                                        <a
+                                            href={social.url}
+                                            target={social.name === 'Email' ? '_self' : '_blank'}
+                                            rel="noopener noreferrer"
+                                            className="px-3 py-1 md:px-4 md:py-2 border-2 border-white rounded-full font-bold text-xs md:text-sm text-white hover:bg-white hover:text-red-600 transition-colors cursor-pointer drop-shadow-md block"
+                                        >
+                                            {social.name}
+                                        </a>
                                     </ScrollReveal>
                                 ))}
                             </div>

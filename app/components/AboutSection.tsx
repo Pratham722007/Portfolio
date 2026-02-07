@@ -40,7 +40,7 @@ export default function AboutSection() {
                                 <p>
                                     I specialize in web development, app development, and AI/ML,
                                     constantly exploring new technologies and approaches to solve
-                                    <span className="underline decoration-wavy decoration-yellow-400 decoration-2 underline-offset-4"> complex problems</span>.
+                                    <span className="font-bold"> complex problems</span>.
                                 </p>
                                 <p>
                                     With a keen eye for detail and a commitment to clean, efficient code,
